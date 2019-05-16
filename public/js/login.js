@@ -46,24 +46,22 @@ class Login {
     judgeRegister(e) {
         e.preventDefault();
         var username = this.op.find("#exampleInputEmail1").val();
-        var pwd = this.op.find("#exampleInputPassword1").val();
+        var password = this.op.find("#exampleInputPassword1").val();
         $.ajax({
             type: "post",
             url: "/users/login",
             data: {
                 username,
-                pwd
+                password
             },
             success: this.successfu.bind(this)
         })
     }
-
     successfu(data) {
         if (data.state) {
-            console.log(data)
             alert("登陆成功");
+            location.href = "http://localhost:3000/home.html"
         } else {
-            console.log(data)
             alert("登陆失败");
         }
     }

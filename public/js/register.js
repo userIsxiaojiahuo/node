@@ -25,9 +25,9 @@ class Register {
 
     createsUI() {
         this.obj.html("");
-        this.op = $("<div></div>")
+        this.op = $("<div></div>");
         this.op.append(str);
-        console.log(this.obj)
+        console.log(this.obj);
         this.obj.append(this.op);
     }
 
@@ -59,7 +59,6 @@ class Register {
     }
     successfu(data){
         if(data.state){
-            console.log(data)
             alert("注册成功");
             show.createUI(true);
         }else{

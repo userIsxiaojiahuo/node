@@ -1,10 +1,6 @@
 .git
 .idea
 /node_modules/
-/css/
 *.json
 !/json/
-*.js
-!/js/
-/font/
 package.json

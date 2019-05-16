@@ -5,7 +5,7 @@ const User = mongoose.model("users", {
 })
 
 const findUser = (findInfo, cd) => {
-    User.find(findInfo).then((result) => {
+    User.findOne(findInfo).then((result) => {
         cd(result)
     })
 }

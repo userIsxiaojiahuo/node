@@ -1,0 +1,46 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+.navbar-brand, .navbar, h2 {
+    padding: 0;
+    margin: 0;
+}
+
+.content {
+    width: 100%;
+    display: flex;
+}
+
+.tabList {
+    width: 192px;
+    height: 100%;
+    border-right: 1px solid #f2f2f2;
+    flex-shrink: 0;
+}
+
+.tabList > ul > li {
+    line-height: 50px;
+    text-align: center;
+    width: 100%;
+    border-bottom: 1px solid #f2f2f2;
+    cursor: pointer;
+}
+
+.cur {
+    background: #428bca;
+    color: #fff;
+}
+.showContent{
+    width: 100%;
+}
