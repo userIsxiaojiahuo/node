@@ -28,14 +28,54 @@ let str3 = `
 class AddJob {
     constructor(obj) {
         this.obj = obj
-        this.createUI()
+        this.createUI();
+        this.addEvent();
     }
 
     createUI() {
         this.op = $("<div></div>");
-        this.obj.append(this.op);
         this.op.append(str3);
+        this.obj.append(this.op);
+    }
+
+    addEvent() {
+        this.op.find("#addForm").on("submit", this.addJobCallBack.bind(this));
+    }
+
+    addJobCallBack(e) {
+        e.preventDefault();
+        let jobName = this.op.find("#job_addJob_name");
+        let jobPrice = this.op.find("#job_addJob_price");
+        let jobAsk = this.op.find("#job_addJob_ask");
+        let comanyName = this.op.find("#company_addJob_name");
+        let jobLogo = this.op.find("#logo_addJob");
+
+        var fromData = new FormData()
+        fromData.append("jobName", jobName.val());
+        fromData.append("jobPrice", jobPrice.val());
+        fromData.append("jobAsk", jobAsk.val());
+        fromData.append("comanyName", comanyName.val());
+        fromData.append("jobLogo", jobLogo[0].files[0]);
+
+        $.ajax({
+            type: "post",
+            url: "join/addJob",
+            data: fromData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: this.callback.bind(this)
+        })
+    }
+
+    callback(data) {
+        if (data.state) {
+            alert("添加成功");
+            new Page($(".tabList")).judeShow(1);
+            new Page($(".tabList")).showSec(1);
+        } else {
+            alert("添加失败");
+        }
     }
 }
 
-new AddJob($("#addJob"))

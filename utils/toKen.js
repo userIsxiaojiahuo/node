@@ -1,13 +1,13 @@
-const tokens = require("jsonwebtoken");
+const token = require("jsonwebtoken");
 
 const createToken = (tokenInfo, sec) => {
-    return tokens.sign(tokenInfo, sec, {expiresIn: 60 * 60})
+    return token.sign(tokenInfo, sec, {expiresIn: "7day"})
 }
 
 // 获取cookie
 
-const tokenGet = (token, sec, callback) => {
-    tokens.verify(token, sec, (err, decode) => {
+const tokenGet = (a, sec, callback) => {
+    token.verify(a, sec, function (err) {
         callback(err)
     })
 }

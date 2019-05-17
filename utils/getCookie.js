@@ -3,7 +3,7 @@ const getCookie = (req, key) => {
     let newArr = cookies.split("; ");
     for (let newArrKey in newArr) {
         let arr = newArr[newArrKey].split("=");
-        if (arr[0] == newArrKey) {
+        if (arr[0] == key) {
             return arr[1]
         }
     }

@@ -2,9 +2,9 @@ class Page {
     constructor(obj) {
         this.tabList = obj.children().children();
         this.jobHome = $("#jobHome");
-        this.addJob = $("#addJob");
         this.jobList = $("#jobList");
-        this.tab()
+        this.addJob = $("#addJob");
+        this.tab();
     }
 
     tab() {
@@ -24,15 +24,26 @@ class Page {
                 break;
             case 1:
                 this.showSection(this.jobList);
+                if (this.jobList.html() == "") {
+                    new JobList(this.jobList)
+                }
                 break
             case 2:
                 this.showSection(this.addJob);
-                break
+                if (this.addJob.html() == "") {
+                    new AddJob(this.addJob);
+                }
+                break;
         }
     }
 
     showSection(obj) {
-        obj.siblings().html("");
+        obj.siblings().hide();
+        obj.show()
+    }
+
+    showSec(index) {
+        this.tabList.eq(index).addClass("cur").siblings().removeClass("cur");
     }
 }
 
