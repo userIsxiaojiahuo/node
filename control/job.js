@@ -38,15 +38,51 @@ const jobList = (req, res) => {
                     info: "1"
                 })
             })
-        } else {
-            console.log("aaaaaaaa")
+        }
+    })
+}
+
+const JobDele = (req, res) => {
+    const {id} = req.query;
+    console.log({id} + "123456")
+    const toKens = cookie.getCookie(req, "token");
+    opToken.tokenGet(toKens, "9527", (err) => {
+        if (!err) {
+            jobMoudel.jobDele({_id: id}, (data) => {
+                res.json({
+                    state: true,
+                    info: "删除成功"
+                })
+            })
+        }
+    })
+}
+//  改
+const JobSave = (req, res) => {
+    const {jobName, jobPrice, jobAsk, companyName, id} = req.body;
+    const jobLogo = req.files.jobLogo[0].path;
+    const url = "http://127.0.0.1:3000/img/" + path.parse(jobLogo).base;
+
+    const toKens = cookie.getCookie(req, "token");
+    opToken.tokenGet(toKens, "9527", (err) => {
+        if (!err) {
+            jobMoudel.jobAmend({_id: id}, {jobName, jobPrice, jobAsk, companyName, id, jobLogo: url}, (result) => {
+                if (result.ok) {
+                    res.json({
+                        state: true,
+                        info: "修改成功"
+                    })
+                }
+            })
         }
     })
 }
 
 module.exports = {
     addJob,
-    jobList
+    jobList,
+    JobDele,
+    JobSave
 }
 
 

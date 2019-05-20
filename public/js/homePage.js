@@ -14,7 +14,7 @@ class Page {
     cutClass(e) {
         $(e.target).addClass("cur").siblings().removeClass("cur");
         let index = $(e.target).index();
-        this.judeShow(index)
+        this.judeShow(index);
     }
 
     judeShow(index) {
@@ -24,10 +24,8 @@ class Page {
                 break;
             case 1:
                 this.showSection(this.jobList);
-                if (this.jobList.html() == "") {
-                    new JobList(this.jobList)
-                }
-                break
+                new JobList(this.jobList);
+                break;
             case 2:
                 this.showSection(this.addJob);
                 if (this.addJob.html() == "") {
@@ -39,7 +37,7 @@ class Page {
 
     showSection(obj) {
         obj.siblings().hide();
-        obj.show()
+        obj.show();
     }
 
     showSec(index) {

@@ -19,7 +19,7 @@ var cp = upload.fields([{name: "jobLogo", maxCount: 1}])
 
 router.post('/addjob', cp, jobCon.addJob);
 router.get('/jobList', jobCon.jobList);
-// router.get('/Jobdelete',jobControl.Jobdelete);
-// router.post('/updateJob', cpUpload,jobControl.updateJob);
+router.get('/JobDele', jobCon.JobDele);
+router.post('/JobSave', cp,jobCon.JobSave);
 
 module.exports = router
